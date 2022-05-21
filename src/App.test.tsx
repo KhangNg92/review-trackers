@@ -1,9 +1,15 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import { createMemoryHistory } from "history";
+import { Router } from "react-router-dom";
+import ReviewDetailInfo from "./components/ReviewDetailInfo/ReviewDetailInfo";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+// test("Review Detail Info should have the save button disable", () => {
+//   let history = createMemoryHistory();
+
+//   render(
+//     <Router location={history.location} navigator={history}>
+//       <ReviewDetailInfo />
+//     </Router>
+//   );
+//   expect(screen.getByRole("button")).toBeDisabled();
+// });
