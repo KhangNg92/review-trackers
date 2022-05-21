@@ -50,6 +50,8 @@ const ReviewDetailInfo = () => {
     setEditMode(false);
   };
 
+  console.log({ disabled });
+
   const displayEditableCommentField = () => (
     <>
       <Stack
@@ -69,6 +71,7 @@ const ReviewDetailInfo = () => {
           name="content"
           onChange={handleCommentChange}
           variant="filled"
+          data-testid="comment-field"
           fullWidth
         />
         <TextField
@@ -77,6 +80,7 @@ const ReviewDetailInfo = () => {
           value={commentInfo.creator}
           onChange={handleCommentChange}
           variant="filled"
+          data-testid="creator-field"
           size="small"
           fullWidth
         />
@@ -86,6 +90,8 @@ const ReviewDetailInfo = () => {
           onClick={() => setEditMode(false)}
           variant="contained"
           disabled={disabled}
+          data-testid="cancel-button"
+          role="button"
         >
           Cancel
         </Button>
@@ -94,6 +100,8 @@ const ReviewDetailInfo = () => {
           onClick={handleOnSave}
           variant="contained"
           disabled={disabled}
+          data-testId="save-button"
+          role="button"
         >
           Save
         </Button>
