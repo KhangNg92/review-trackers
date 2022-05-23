@@ -5,7 +5,7 @@ import ReviewDetail from "./components/ReviewDetail/ReviewDetail";
 import { IDetail, reviewList } from "./utils/reviews";
 
 function App() {
-  const [reviews, setReviews] = useState<IDetail[]>(reviewList);
+  const [reviews, setReviews] = useState<IDetail[]>([]);
   const location = useLocation();
   const state = location.state as IDetail;
 
@@ -18,7 +18,8 @@ function App() {
       newReviews.splice(foundUpdatedReview, 1, state);
       setReviews(newReviews);
     }
-  }, []);
+    setReviews(reviewList);
+  }, [location.state, reviews, state]);
 
   return (
     <>

@@ -9,13 +9,11 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Box } from "@mui/system";
 import moment from "moment";
-import React, { useState } from "react";
-
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { IComment, IDetail } from "../../utils/reviews";
-import { DisabledByDefaultTwoTone, Edit } from "@mui/icons-material";
+import { Edit } from "@mui/icons-material";
 
 interface ReviewDetail {
   detailInfo: IDetail;
@@ -25,7 +23,7 @@ const ReviewDetailInfo = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const state = location.state as ReviewDetail;
-  const [reviewInfo, setReviewInfo] = useState<ReviewDetail>(state);
+  const [reviewInfo] = useState<ReviewDetail>(state);
   const [editMode, setEditMode] = useState<boolean>(
     !reviewInfo.detailInfo.comment.content.length || false
   );
@@ -50,8 +48,6 @@ const ReviewDetailInfo = () => {
     setEditMode(false);
   };
 
-  console.log({ disabled });
-
   const displayEditableCommentField = () => (
     <>
       <Stack
@@ -71,16 +67,16 @@ const ReviewDetailInfo = () => {
           name="content"
           onChange={handleCommentChange}
           variant="filled"
-          data-testid="comment-field"
+          inputProps={{ "data-testid": "comment-field" }}
           fullWidth
         />
         <TextField
           label="Enter your name here"
           name="creator"
           value={commentInfo.creator}
+          inputProps={{ "data-testid": "creator-field" }}
           onChange={handleCommentChange}
           variant="filled"
-          data-testid="creator-field"
           size="small"
           fullWidth
         />
@@ -90,7 +86,7 @@ const ReviewDetailInfo = () => {
           onClick={() => setEditMode(false)}
           variant="contained"
           disabled={disabled}
-          data-testid="cancel-button"
+          data-testId="cancel-button"
           role="button"
         >
           Cancel
